@@ -1,0 +1,16 @@
+{
+  "name": "map-reduce",
+  "description": "A map-reduce algorithm for Node",
+  "author": "Steven Miller",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenmiller888/map-reduce"
+  },
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "2.x"
+  }
+}
