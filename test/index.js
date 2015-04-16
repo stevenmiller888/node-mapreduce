@@ -45,7 +45,7 @@ describe('MapReduce()', function(){
 
   it('should work when the number of lines is less than the number of CPUs', function(){
     var mapReduce = MapReduce();
-    
+
     mapReduce(small, helpers.map, helpers.reduce, function(res){
       assert.deepEqual(res, helpers.smallResult);
     });
@@ -61,20 +61,20 @@ describe('MapReduce()', function(){
 
   it('should work when the number of lines is greater than the number of CPUs', function(){
     var mapReduce = MapReduce();
-    
+
     mapReduce(large, helpers.map, helpers.reduce, function(res){
       assert.deepEqual(res, helpers.largeResult);
     });
   });
-  
+
   it('should perform well on large files with higher parallelism', function(){
     var mapReduce = MapReduce(8);
-    
+
     mapReduce(large, helpers.map, helpers.reduce, function(res){
       // ...
     });
   });
-  
+
   it('should perform worse on large files with lower parallelism', function(){
     var mapReduce = MapReduce(1);
 
