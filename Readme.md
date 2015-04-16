@@ -9,7 +9,7 @@
 
 ## Usage
 
-```
+```js
 var MapReduce = require('map-reduce');
 var mapReduce = MapReduce();
 
@@ -23,8 +23,8 @@ var article = [
 ];
 
 function map(str){
-  var ret = [];
-
+  var ret = {};
+  
   str.split(' ').forEach(function(w){
     w = w.toLowerCase();
     if (ret[w]) return ret[w] += 1;
@@ -35,13 +35,11 @@ function map(str){
 }
 
 function reduce(k, vals){
-  var ret = {};
-  
-  ret[k] = vals.reduce(function(acc, val){
+  if (!vals.length) return 1;
+
+  return vals.reduce(function(acc, val){
     return acc + val;
   });
-
-  return ret;
 }
 
 mapReduce(article, map, reduce, function(result){
