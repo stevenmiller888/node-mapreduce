@@ -3,7 +3,7 @@
  * Map helper.
  */
 
-exports.map = function map(str){
+exports.map = function(str){
   var ret = {};
   
   str.split(' ').forEach(function(w){
@@ -13,7 +13,7 @@ exports.map = function map(str){
   });
 
   return ret;
-}
+};
 
 
 /**
@@ -26,10 +26,10 @@ exports.reduce = function(k, vals){
   return vals.reduce(function(acc, val){
     return acc + val;
   });
-}
+};
 
 /**
- * Short result object.
+ * Short result.
  */
 
 exports.shortResult = {
@@ -98,7 +98,7 @@ exports.shortResult = {
 };
 
 /**
- * Short result object.
+ * Long result.
  */
 
 exports.longResult = {
