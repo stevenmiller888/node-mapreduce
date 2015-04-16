@@ -38,14 +38,6 @@ describe('MapReduce()', function(){
     }
   });
 
-  it('should only allow values less than the machine\'s number of CPUs for parallelism', function(){
-    try {
-      MapReduce(10);
-    } catch (e) {
-      assert.equal(e.message, 'The number of CPUs must be less than or equal to the machine\'s');
-    }
-  });
-
   it('should return a function', function(){
     var mapReduce = MapReduce();
     assert.equal(typeof mapReduce, 'function');
