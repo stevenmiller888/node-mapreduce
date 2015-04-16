@@ -3,8 +3,6 @@
 
 > A map-reduce algorithm for Node
 
-![]()
-
 ## Installation
 
     $ npm install map-reduce
