@@ -5,12 +5,12 @@
 
 ## Installation
 
-    $ npm install map-reduce
+    $ npm install node-mapreduce
 
 ## Usage
 
 ```js
-var MapReduce = require('map-reduce');
+var MapReduce = require('node-mapreduce');
 var mapReduce = MapReduce();
 
 var article = 'A very long string';
