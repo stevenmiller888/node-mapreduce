@@ -9,6 +9,14 @@ var MapReduce = require('..');
 var fs = require('fs');
 
 /**
+ * Articles.
+ */
+
+var small = fs.readFileSync('test/small.txt', { encoding: 'utf8' });
+var medium = fs.readFileSync('test/medium.txt', { encoding: 'utf8' });
+var large = fs.readFileSync('test/large.txt', { encoding: 'utf8' });
+
+/**
  * Tests.
  */
 
@@ -45,25 +53,41 @@ describe('MapReduce()', function(){
 
   it('should work when the number of lines is less than the number of CPUs', function(){
     var mapReduce = MapReduce();
-    var article = fs.readFileSync('test/small.txt', { encoding: 'utf8' });
-    mapReduce(article, helpers.map, helpers.reduce, function(res){
+    
+    mapReduce(small, helpers.map, helpers.reduce, function(res){
       assert.deepEqual(res, helpers.smallResult);
     });
   });
 
   it('should work when the number of lines is equal to the number of CPUs', function(){
     var mapReduce = MapReduce();
-    var article = fs.readFileSync('test/medium.txt', { encoding: 'utf8' });
-    mapReduce(article, helpers.map, helpers.reduce, function(res){
+
+    mapReduce(medium, helpers.map, helpers.reduce, function(res){
       assert.deepEqual(res, helpers.mediumResult);
     });
   });
 
   it('should work when the number of lines is greater than the number of CPUs', function(){
     var mapReduce = MapReduce();
-    var article = fs.readFileSync('test/large.txt', { encoding: 'utf8' });
-    mapReduce(article, helpers.map, helpers.reduce, function(res){
+    
+    mapReduce(large, helpers.map, helpers.reduce, function(res){
       assert.deepEqual(res, helpers.largeResult);
+    });
+  });
+  
+  it('should perform well on large files with higher parallelism', function(){
+    var mapReduce = MapReduce(8);
+    
+    mapReduce(large, helpers.map, helpers.reduce, function(res){
+      // ...
+    });
+  });
+  
+  it('should perform worse on large files with lower parallelism', function(){
+    var mapReduce = MapReduce(1);
+
+    mapReduce(large, helpers.map, helpers.reduce, function(res){
+      // ...
     });
   });
 });
